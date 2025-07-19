@@ -1,0 +1,75 @@
+<section class="bg-[#EFF2FB] py-12 px-6">
+  <div class="max-w-7xl mx-auto text-center mb-12">
+    <p class="text-sm text-violet-700 font-bold uppercase">
+      Personajes principales
+    </p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2">
+      Conoce a los protagonistas de Rick and Morty
+    </h2>
+    <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+      Estos son los personajes más icónicos del universo Rick and Morty. Cada
+      uno aporta caos, humor y ciencia extrema a cada episodio.
+    </p>
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
+  >
+    <!-- SKELETON LOADER -->
+    <ng-container *ngIf="isLoading">
+      <div
+        *ngFor="let sk of [1, 2, 3, 4, 5]"
+        class="w-full h-[300px] bg-gray-200 rounded-lg animate-pulse"
+      ></div>
+    </ng-container>
+
+    <!-- PERSONAJES -->
+    <ng-container *ngIf="!isLoading">
+      <div
+        *ngFor="let personaje of personajes"
+        class="w-full relative mx-auto h-[300px] overflow-hidden rounded-lg group"
+      >
+        <img
+          [src]="personaje.imagen"
+          [alt]="personaje.nombre"
+          class="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/40 p-4 flex flex-col justify-end rounded-lg"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-white text-xl font-semibold">
+              {{ personaje.nombre }}
+            </h3>
+            <span
+              class="text-xs font-semibold px-3 py-1 rounded-full text-white"
+              [ngClass]="{
+                'border-2 border-green-500 bg-green-400':
+                  personaje.estado === 'Alive',
+                'bg-red-500': personaje.estado === 'Dead',
+                'bg-gray-400': personaje.estado === 'unknown'
+              }"
+            >
+              {{
+                personaje.estado === "Alive"
+                  ? "Vivo"
+                  : personaje.estado === "Dead"
+                  ? "Muerto"
+                  : "Desconocido"
+              }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="text-center mt-10">
+    <p class="text-gray-600">
+      Y muchos más personajes locos en el multiverso.
+      <a href="#" class="text-violet-600 font-semibold hover:underline">
+        Ver más personajes >
+      </a>
+    </p>
+  </div>
+</section>

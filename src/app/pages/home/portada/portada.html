@@ -1,0 +1,71 @@
+<!-- Hero Carousel Section -->
+<section
+  data-hs-carousel='{
+    "loadingClasses": "opacity-0",
+    "isAutoPlay": true,
+    "interval": 4000,
+    "pauseOnHover": false
+  }'
+  class="relative h-[90vh] overflow-hidden"
+>
+  <!-- Carousel container -->
+  <div class="hs-carousel relative w-full h-full">
+    <div
+      class="hs-carousel-body absolute inset-0 flex transition-transform duration-700 opacity-0"
+    >
+      <!-- Slide 1 -->
+      <div class="hs-carousel-slide h-full w-full">
+        <div
+          class="h-full w-full bg-cover bg-center"
+          style="background-image: url('assets/img/rickandmorty.jpg')"
+        ></div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="hs-carousel-slide h-full w-full">
+        <div
+          class="h-full w-full bg-cover bg-center"
+          style="background-image: url('assets/img/slider2.jpg')"
+        ></div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="hs-carousel-slide h-full w-full">
+        <div
+          class="h-full w-full bg-cover bg-center"
+          style="background-image: url('assets/img/slider3.jpg')"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Overlay negro -->
+    <div class="absolute inset-0 bg-black/60 z-10"></div>
+
+    <!-- Contenido centrado -->
+    <div
+      class="absolute inset-0 flex items-center justify-center z-20 text-white px-4 text-center"
+    >
+      <div class="max-w-3xl">
+        <p class="uppercase tracking-wider text-sm text-gray-200">
+          +800 personajes
+        </p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+          Explora el universo de <br />
+          Rick & Morty
+        </h1>
+        <p class="mb-6 text-lg text-gray-300">
+          Descubre personajes, episodios y ubicaciones únicas.
+        </p>
+        <a
+          routerLink="/characters"
+          class="bg-[#7946e3] hover:bg-purple-600 text-white font-semibold py-3 px-6 rounded-xl transition"
+        >
+          Explorar ahora
+        </a>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <div
+      class="hs-carousel-pagination flex justify-center absolute bottom-5 inset-x-0 z-20 gap-x-2"
+    ></div>
+  </div>
+</section>
