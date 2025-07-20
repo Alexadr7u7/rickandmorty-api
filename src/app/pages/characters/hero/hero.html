@@ -1,0 +1,108 @@
+<section class="relative bg-[#14141F] text-white py-20 px-6 overflow-visible">
+  <!-- Imagen de Rick decorativa -->
+  <img
+    src="assets/img/rick.png"
+    alt="Rick"
+    class="absolute bottom-0 right-0 max-w-none h-70 object-contain z-0 pointer-events-none select-none"
+  />
+
+  <!-- Contenido centrado -->
+  <div class="relative z-10 max-w-4xl mx-auto text-center">
+    <h1 class="text-4xl font-extrabold leading-tight mb-4">
+      Encuentra a tu personaje favorito
+    </h1>
+    <p class="text-lg text-gray-300 mb-6">
+      Explora el multiverso y conoce a Rick, Morty, Meeseeks y cientos más.
+      ¡Busca por nombre o dimensión!
+    </p>
+
+    <!-- Barra de búsqueda con botón de filtro -->
+    <div class="relative inline-block max-w-2xl w-full mx-auto text-left">
+      <!-- Grupo de búsqueda -->
+      <!-- Contenedor principal: disposición horizontal incluso en móviles -->
+      <div
+        class="flex flex-row flex-wrap items-center gap-4 max-w-2xl w-full mx-auto mb-4"
+      >
+        <!-- Input + botón buscar -->
+        <div
+          class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
+        >
+          <input
+            type="text"
+            placeholder="Ej. Rick, Summer, Birdperson..."
+            class="flex-1 px-4 py-3 text-gray-800 focus:outline-none"
+          />
+          <button
+            class="bg-pink-600 hover:bg-pink-700 text-white px-6 cursor-pointer"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <!-- Botón filtros separado, pero en línea -->
+        <button
+          id="toggleFiltrosBtn"
+          class="cursor-pointer bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 px-6 py-3 rounded-xl shadow-md"
+          onclick="document.getElementById('filtrosCard').classList.toggle('hidden')"
+        >
+          <i class="fas fa-sliders-h"></i>
+        </button>
+      </div>
+
+      <!-- Dropdown tipo card de filtros -->
+      <div
+        id="filtrosCard"
+        class="hidden absolute right-0 mt-2 w-full bg-white text-black text-left p-6 rounded-xl shadow-2xl z-20"
+      >
+        <h3 class="text-xl font-bold mb-4">Filtros</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm font-medium mb-1">Estatus</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+              <option>Todos</option>
+              <option>Vivo</option>
+              <option>Muerto</option>
+              <option>Desconocido</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Especie</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+              <option>Todos</option>
+              <option>Humano</option>
+              <option>Alien</option>
+              <option>Robot</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-1">Género</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+              <option>Todos</option>
+              <option>Hombre</option>
+              <option>Mujer</option>
+              <option>Sin género</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+          <!-- Botón Aplicar (más ancho) -->
+          <button
+            class="flex items-center justify-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded-xl shadow-md transition-all duration-300 w-full sm:flex-grow"
+            onclick="document.getElementById('filtrosCard').classList.add('hidden')"
+          >
+            <i class="fas fa-check"></i> Aplicar
+          </button>
+
+          <!-- Botón Cancelar (tamaño fijo) -->
+          <button
+            class="flex items-center justify-center gap-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-6 py-2 rounded-xl shadow-md transition-all duration-300 w-full sm:w-auto"
+            onclick="document.getElementById('filtrosCard').classList.add('hidden')"
+          >
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
