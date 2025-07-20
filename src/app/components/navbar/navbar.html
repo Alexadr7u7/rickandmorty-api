@@ -75,26 +75,33 @@
       >
         <a
           class="font-medium text-blue-400 hover:text-gray-400 focus:outline-hidden focus:text-blue-400 text-lg"
-          href="#"
-          aria-current="page"
+          routerLink="/"
+          routerLinkActive="text-blue-400"
+          [routerLinkActiveOptions]="{ exact: true }"
         >
           Inicio
         </a>
+
         <a
           class="font-medium text-white hover:text-gray-400 focus:outline-hidden focus:text-gray-400 text-lg"
-          href="#"
+          routerLink="/personajes"
+          routerLinkActive="text-blue-400"
         >
           Personajes
         </a>
+
         <a
           class="font-medium text-white hover:text-gray-400 focus:outline-hidden focus:text-gray-400 text-lg"
-          href="#"
+          routerLink="/episodios"
+          routerLinkActive="text-blue-400"
         >
           Episodios
         </a>
+
         <a
           class="font-medium text-white hover:text-gray-400 focus:outline-hidden focus:text-gray-400 text-lg"
-          href="#"
+          routerLink="/lugares"
+          routerLinkActive="text-blue-400"
         >
           Lugares
         </a>
