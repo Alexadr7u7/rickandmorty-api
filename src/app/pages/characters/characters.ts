@@ -2,10 +2,11 @@ import { Component, Output, EventEmitter, input } from '@angular/core';
 import { Hero } from './hero/hero';
 import { RickAndMortyService } from '../../services/rick-and-morty';
 import { CommonModule } from '@angular/common';
+import { ModalInfo } from './modal-info/modal-info';
 
 @Component({
   selector: 'app-characters',
-  imports: [Hero, CommonModule],
+  imports: [Hero, CommonModule, ModalInfo],
   templateUrl: './characters.html',
   styleUrl: './characters.css',
 })
@@ -16,7 +17,7 @@ export class Characters {
   imageLoaded: boolean[] = [];
   skeletonArray = new Array(10);
   searchTerm = '';
-
+  personajeSeleccionado: any = null;
   constructor(private rmService: RickAndMortyService) {}
 
   @Output() onSearch: EventEmitter<string> = new EventEmitter();
@@ -53,5 +54,14 @@ export class Characters {
   filtrarPorNombre(nombre: string): void {
     this.searchTerm = nombre;
     this.obtenerPersonajes();
+  }
+  abrirModal(personaje: any): void {
+    this.personajeSeleccionado = personaje;
+    document.body.style.overflow = 'hidden';
+  }
+
+  cerrarModal(): void {
+    this.personajeSeleccionado = null;
+    document.body.style.overflow = 'auto';
   }
 }

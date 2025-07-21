@@ -18,22 +18,24 @@
       <div
         class="flex flex-row flex-wrap items-center gap-4 max-w-2xl w-full mx-auto mb-4"
       >
-        <div
+        <form
+          (ngSubmit)="buscar()"
           class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
         >
           <input
             [(ngModel)]="searchTerm"
+            name="search"
             type="text"
             placeholder="Ej. Rick, Summer..."
             class="flex-1 px-4 py-3 text-gray-800 focus:outline-none"
           />
           <button
-            (click)="buscar()"
+            type="submit"
             class="bg-pink-600 hover:bg-pink-700 text-white px-6 cursor-pointer"
           >
             <i class="fas fa-search"></i>
           </button>
-        </div>
+        </form>
 
         <button
           id="toggleFiltrosBtn"
@@ -67,6 +69,8 @@
               <option>Humano</option>
               <option>Alien</option>
               <option>Robot</option>
+              <option>humanoide</option>
+              <option>otro</option>
             </select>
           </div>
           <div class="md:col-span-2">
