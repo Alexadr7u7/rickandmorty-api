@@ -1,0 +1,8 @@
+<!-- Botón flotante para volver arriba -->
+<button
+  *ngIf="mostrarBoton"
+  (click)="scrollArriba()"
+  class="fixed bottom-6 right-6 bg-[#14141F] text-white p-3 rounded-full shadow-md hover:scale-110 transition-transform duration-300 z-50 w-15 h-15 flex items-center justify-center"
+>
+  <i class="fas fa-chevron-up text-lg"></i>
+</button>

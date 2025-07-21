@@ -12,25 +12,6 @@ export class RickAndMortyService {
 
   constructor(private http: HttpClient) {}
 
-  getAllCharacters(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}/character`).pipe(
-      switchMap((response) => {
-        const totalPages = response.info.pages;
-        const requests = [];
-
-        for (let i = 1; i <= totalPages; i++) {
-          requests.push(
-            this.http.get<any>(`${this.baseUrl}/character?page=${i}`)
-          );
-        }
-
-        return forkJoin(requests).pipe(
-          map((responses: any[]) => responses.flatMap((res) => res.results))
-        );
-      })
-    );
-  }
-
   getCharacterById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/character/${id}`);
   }
@@ -44,5 +25,9 @@ export class RickAndMortyService {
       episodes: this.http.get<any>(`${this.baseUrl}/episode`),
       locations: this.http.get<any>(`${this.baseUrl}/location`),
     });
+  }
+  getCharactersByPage(page: number, name: string = ''): Observable<any> {
+    const url = `${this.baseUrl}/character?page=${page}&name=${name}`;
+    return this.http.get<any>(url);
   }
 }

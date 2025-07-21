@@ -3,7 +3,7 @@
 <section class="px-4 py-8 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <!-- Skeletons mientras carga la API (mostrar 10 skeletons) -->
-    <ng-container *ngIf="isLoading === false">
+    <ng-container *ngIf="isLoadingInitial">
       <div
         *ngFor="let _ of skeletonArray"
         class="relative bg-white rounded-xl shadow-md flex overflow-hidden min-h-[180px] animate-pulse"
@@ -19,13 +19,8 @@
     </ng-container>
 
     <!-- Tarjetas reales cuando ya cargaron los datos -->
-    <ng-container *ngIf="isLoading === true">
-      <ng-container
-        *ngFor="
-          let personaje of personajes | slice : 0 : visibleCount;
-          let i = index
-        "
-      >
+    <ng-container *ngIf="!isLoadingInitial">
+      <ng-container *ngFor="let personaje of personajes; let i = index">
         <div
           class="group relative bg-white rounded-xl shadow-md flex overflow-hidden min-h-[180px] transition-transform duration-300 ease-in-out cursor-pointer hover:-translate-y-2 hover:shadow-lg"
           (click)="abrirModal(personaje)"
@@ -68,7 +63,7 @@
           </div>
           <div
             *ngIf="!imageLoaded[i]"
-            class="absolute inset-0 bg-gray-200 animate-pulse flex"
+            class="absolute inset-0 bg-white animate-pulse flex"
           >
             <div class="w-40 h-full bg-gray-300 shrink-0"></div>
             <div class="flex-1 p-4 space-y-3">
@@ -87,7 +82,7 @@
     <button
       (click)="verMas()"
       class="bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-purple-700 transition cursor-pointer"
-      *ngIf="visibleCount < personajes.length"
+      *ngIf="currentPage < totalPages && !isLoadingMore"
     >
       Ver más
     </button>
