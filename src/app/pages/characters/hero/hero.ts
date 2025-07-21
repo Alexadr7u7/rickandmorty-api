@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms'; //
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './hero.html',
-  styleUrl: './hero.css'
+  styleUrl: './hero.css',
 })
 export class Hero {
+  searchTerm: string = '';
 
+  @Output() onSearch: EventEmitter<string> = new EventEmitter();
+
+  buscar() {
+    this.onSearch.emit(this.searchTerm.trim());
+  }
 }

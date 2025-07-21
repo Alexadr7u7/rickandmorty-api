@@ -1,2 +1,93 @@
-<app-hero></app-hero>
-<app-main-characters></app-main-characters>
+<app-hero (onSearch)="filtrarPorNombre($event)"></app-hero>
+
+<section class="px-4 py-8 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Skeletons mientras carga la API (mostrar 10 skeletons) -->
+    <ng-container *ngIf="isLoading === false">
+      <div
+        *ngFor="let _ of skeletonArray"
+        class="relative bg-white rounded-xl shadow-md flex overflow-hidden min-h-[180px] animate-pulse"
+      >
+        <div class="w-40 h-full bg-gray-300 shrink-0"></div>
+        <div class="flex-1 p-4 space-y-3">
+          <div class="h-6 bg-gray-300 rounded w-1/2"></div>
+          <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+          <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+          <div class="h-4 bg-gray-300 rounded w-2/3"></div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Tarjetas reales cuando ya cargaron los datos -->
+    <ng-container *ngIf="isLoading === true">
+      <ng-container
+        *ngFor="
+          let personaje of personajes | slice : 0 : visibleCount;
+          let i = index
+        "
+      >
+        <div
+          class="relative bg-white rounded-xl shadow-md flex overflow-hidden min-h-[180px] transition-all duration-300"
+        >
+          <img
+            [src]="personaje.image"
+            alt="{{ personaje.name }}"
+            class="w-40 h-auto object-cover shrink-0"
+            (load)="onImageLoad(i)"
+            [class.hidden]="!imageLoaded[i]"
+          />
+          <div
+            class="p-4 text-gray-800 flex-1"
+            [class.hidden]="!imageLoaded[i]"
+          >
+            <h2 class="text-xl font-bold">{{ personaje.name }}</h2>
+            <p class="text-sm mt-1 flex items-center">
+              <span
+                class="size-2 inline-block rounded-full me-2"
+                [ngClass]="{
+                  'bg-green-500': personaje.status === 'Alive',
+                  'bg-red-500': personaje.status === 'Dead',
+                  'bg-gray-400': personaje.status === 'unknown'
+                }"
+              ></span>
+              <span class="font-medium">{{ personaje.status }}</span> -
+              {{ personaje.species }}
+            </p>
+
+            <p class="text-sm mt-2">
+              <span class="font-semibold"> Última ubicación conocida:</span
+              ><br />
+              {{ personaje.location.name }}
+            </p>
+            <p class="text-sm mt-2">
+              <span class="font-semibold">Visto por primera vez en:</span><br />
+              {{ personaje.origin.name }}
+            </p>
+          </div>
+          <div
+            *ngIf="!imageLoaded[i]"
+            class="absolute inset-0 bg-gray-200 animate-pulse flex"
+          >
+            <div class="w-40 h-full bg-gray-300 shrink-0"></div>
+            <div class="flex-1 p-4 space-y-3">
+              <div class="h-6 bg-gray-300 rounded w-1/2"></div>
+              <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+              <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+              <div class="h-4 bg-gray-300 rounded w-2/3"></div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div class="flex justify-center mt-6">
+    <button
+      (click)="verMas()"
+      class="bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-purple-700 transition cursor-pointer"
+      *ngIf="visibleCount < personajes.length"
+    >
+      Ver más
+    </button>
+  </div>
+</section>

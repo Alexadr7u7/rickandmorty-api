@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 import { API_CONFIG } from '../api.config';
 
 @Injectable({
@@ -11,8 +12,23 @@ export class RickAndMortyService {
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/character`);
+  getAllCharacters(): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}/character`).pipe(
+      switchMap((response) => {
+        const totalPages = response.info.pages;
+        const requests = [];
+
+        for (let i = 1; i <= totalPages; i++) {
+          requests.push(
+            this.http.get<any>(`${this.baseUrl}/character?page=${i}`)
+          );
+        }
+
+        return forkJoin(requests).pipe(
+          map((responses: any[]) => responses.flatMap((res) => res.results))
+        );
+      })
+    );
   }
 
   getCharacterById(id: number): Observable<any> {

@@ -1,12 +1,10 @@
 <section class="relative bg-[#14141F] text-white py-20 px-6 overflow-visible">
-  <!-- Imagen de Rick decorativa -->
   <img
     src="assets/img/rick.png"
     alt="Rick"
     class="absolute bottom-0 right-0 max-w-none h-70 object-contain z-0 pointer-events-none select-none"
   />
 
-  <!-- Contenido centrado -->
   <div class="relative z-10 max-w-4xl mx-auto text-center">
     <h1 class="text-4xl font-extrabold leading-tight mb-4">
       Encuentra a tu personaje favorito
@@ -16,30 +14,27 @@
       ¡Busca por nombre o dimensión!
     </p>
 
-    <!-- Barra de búsqueda con botón de filtro -->
     <div class="relative inline-block max-w-2xl w-full mx-auto text-left">
-      <!-- Grupo de búsqueda -->
-      <!-- Contenedor principal: disposición horizontal incluso en móviles -->
       <div
         class="flex flex-row flex-wrap items-center gap-4 max-w-2xl w-full mx-auto mb-4"
       >
-        <!-- Input + botón buscar -->
         <div
           class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
         >
           <input
+            [(ngModel)]="searchTerm"
             type="text"
-            placeholder="Ej. Rick, Summer, Birdperson..."
+            placeholder="Ej. Rick, Summer..."
             class="flex-1 px-4 py-3 text-gray-800 focus:outline-none"
           />
           <button
+            (click)="buscar()"
             class="bg-pink-600 hover:bg-pink-700 text-white px-6 cursor-pointer"
           >
             <i class="fas fa-search"></i>
           </button>
         </div>
 
-        <!-- Botón filtros separado, pero en línea -->
         <button
           id="toggleFiltrosBtn"
           class="cursor-pointer bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 px-6 py-3 rounded-xl shadow-md"
@@ -86,7 +81,6 @@
         </div>
 
         <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-          <!-- Botón Aplicar (más ancho) -->
           <button
             class="flex items-center justify-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded-xl shadow-md transition-all duration-300 w-full sm:flex-grow"
             onclick="document.getElementById('filtrosCard').classList.add('hidden')"
@@ -94,7 +88,6 @@
             <i class="fas fa-check"></i> Aplicar
           </button>
 
-          <!-- Botón Cancelar (tamaño fijo) -->
           <button
             class="flex items-center justify-center gap-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-6 py-2 rounded-xl shadow-md transition-all duration-300 w-full sm:w-auto"
             onclick="document.getElementById('filtrosCard').classList.add('hidden')"
