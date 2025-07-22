@@ -26,8 +26,22 @@ export class RickAndMortyService {
       locations: this.http.get<any>(`${this.baseUrl}/location`),
     });
   }
-  getCharactersByPage(page: number, name: string = ''): Observable<any> {
-    const url = `${this.baseUrl}/character?page=${page}&name=${name}`;
+  getCharactersByPage(
+    page: number,
+    name: string = '',
+    status: string = '',
+    species: string = '',
+    gender: string = ''
+  ): Observable<any> {
+    const params = new URLSearchParams();
+
+    params.set('page', String(page));
+    if (name) params.set('name', name);
+    if (status) params.set('status', status);
+    if (species) params.set('species', species);
+    if (gender) params.set('gender', gender);
+
+    const url = `${this.baseUrl}/character?${params.toString()}`;
     return this.http.get<any>(url);
   }
 }

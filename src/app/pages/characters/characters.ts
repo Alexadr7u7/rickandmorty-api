@@ -20,6 +20,10 @@ export class Characters {
   personajeSeleccionado: any = null;
   currentPage = 1;
   totalPages = 0;
+  status: string = ''; // alive, dead, unknown
+  species: string = ''; // especie escrita o tipo
+  gender: string = ''; // male, female, genderless, unknown
+
   paginasCargadas: Set<number> = new Set();
 
   constructor(private rmService: RickAndMortyService) {}
@@ -50,7 +54,13 @@ export class Characters {
     }
 
     this.rmService
-      .getCharactersByPage(this.currentPage, this.searchTerm)
+      .getCharactersByPage(
+        this.currentPage,
+        this.searchTerm,
+        this.status,
+        this.species,
+        this.gender
+      )
       .subscribe({
         next: (response) => {
           const nuevosPersonajes = response.results || [];
@@ -95,5 +105,26 @@ export class Characters {
   cerrarModal(): void {
     this.personajeSeleccionado = null;
     document.body.style.overflow = 'auto';
+  }
+
+  aplicarFiltrosAvanzados(filtros: {
+    status: string;
+    species: string;
+    gender: string;
+  }): void {
+    this.status = filtros.status;
+    this.species = filtros.species;
+    this.gender = filtros.gender;
+    this.resetAndLoad();
+  }
+  reiniciarFiltros(): void {
+    this.searchTerm = '';
+    this.status = '';
+    this.species = '';
+    this.gender = '';
+    this.currentPage = 1;
+    this.personajes = [];
+    this.totalPages = 0;
+    this.resetAndLoad();
   }
 }
