@@ -44,4 +44,15 @@ export class RickAndMortyService {
     const url = `${this.baseUrl}/character?${params.toString()}`;
     return this.http.get<any>(url);
   }
+
+  getEpisodes(name: string, page: number) {
+    let url = `https://rickandmortyapi.com/api/episode?page=${page}`;
+    if (name) {
+      url += `&name=${name}`;
+    }
+    return this.http.get<any>(url);
+  }
+  getEpisodeById(id: number) {
+    return this.http.get<any>(`https://rickandmortyapi.com/api/episode/${id}`);
+  }
 }

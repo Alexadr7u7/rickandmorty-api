@@ -1,0 +1,56 @@
+<div
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-[100]"
+  *ngIf="episodio"
+>
+  <div
+    class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl p-8 relative text-gray-800"
+  >
+    <!-- Botón cerrar -->
+    <button
+      class="absolute top-4 right-5 text-2xl font-bold text-gray-500 hover:text-gray-800"
+      (click)="cerrarModal()"
+    >
+      ✕
+    </button>
+
+    <!-- Contenido del modal -->
+    <div class="flex flex-col gap-6">
+      <!-- Info episodio -->
+      <div class="space-y-2">
+        <h2 class="text-3xl font-bold">{{ episodio.name }}</h2>
+        <p><strong>Fecha de emisión:</strong> {{ episodio.air_date }}</p>
+        <p><strong>Código:</strong> {{ episodio.episode }}</p>
+        <p>
+          <strong>Personajes en este episodio:</strong>
+          {{ episodio.characters.length }}
+        </p>
+      </div>
+
+      <!-- Galería de personajes con scroll -->
+      <div class="w-full max-h-[320px] overflow-y-auto pr-1">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <ng-container *ngIf="personajes.length > 0; else cargando">
+            <div
+              *ngFor="let p of personajes"
+              class="rounded-lg overflow-hidden shadow-sm"
+            >
+              <img
+                [src]="p.image"
+                [alt]="p.name"
+                class="w-full aspect-square object-cover"
+              />
+            </div>
+          </ng-container>
+
+          <!-- Skeletons -->
+          <ng-template #cargando>
+            <div
+              *ngFor="let skeleton of [1, 2, 3, 4, 5, 6, 7, 8]"
+              class="rounded-lg overflow-hidden shadow animate-pulse bg-gray-300 aspect-square w-full"
+            ></div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
