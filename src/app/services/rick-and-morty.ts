@@ -55,4 +55,16 @@ export class RickAndMortyService {
   getEpisodeById(id: number) {
     return this.http.get<any>(`https://rickandmortyapi.com/api/episode/${id}`);
   }
+
+  getLocations(name: string, page: number) {
+    let url = `https://rickandmortyapi.com/api/location?page=${page}`;
+    if (name) {
+      url += `&name=${name}`;
+    }
+    return this.http.get<any>(url);
+  }
+
+  getLocationById(id: number) {
+    return this.http.get<any>(`https://rickandmortyapi.com/api/location/${id}`);
+  }
 }

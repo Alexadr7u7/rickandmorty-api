@@ -1,0 +1,42 @@
+<section class="relative bg-[#14141F] text-white py-20 px-6 overflow-visible">
+  <img
+    src="assets/img/locations-hero.png"
+    alt="Rick"
+    class="absolute bottom-0 right-0 max-w-none h-50 object-contain z-0 pointer-events-none select-none"
+  />
+
+  <div class="relative z-10 max-w-4xl mx-auto text-center">
+    <h1 class="text-4xl font-extrabold leading-tight mb-4">
+      Explora todos los lugares del universo de Rick and Morty
+    </h1>
+    <p class="text-lg text-gray-300 mb-6">
+      Descubre planetas, dimensiones y ubicaciones icónicas que han marcado la
+      historia de la serie.
+    </p>
+
+    <div class="relative inline-block max-w-2xl w-full mx-auto text-left">
+      <div
+        class="flex flex-row flex-wrap items-center gap-4 max-w-2xl w-full mx-auto mb-4"
+      >
+        <form
+          (submit)="buscarLocation()"
+          class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
+        >
+          <input
+            [(ngModel)]="searchTerm"
+            name="search"
+            type="text"
+            placeholder="Ej. Earth (C-137), Citadel of Ricks..."
+            class="flex-1 px-4 py-3 text-gray-800 focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="bg-pink-600 hover:bg-pink-700 text-white px-6 cursor-pointer"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
