@@ -6,10 +6,10 @@
   />
 
   <div class="relative z-10 max-w-4xl mx-auto text-center">
-    <h1 class="text-4xl font-extrabold leading-tight mb-4">
+    <h1 class="text-4xl font-extrabold leading-tight mb-4" data-aos="fade-down">
       Encuentra a tu personaje favorito
     </h1>
-    <p class="text-lg text-gray-300 mb-6">
+    <p class="text-lg text-gray-300 mb-6" data-aos="fade-down">
       Explora el multiverso y conoce a Rick, Morty, Meeseeks y cientos más.
       ¡Busca por nombre o dimensión!
     </p>
@@ -21,6 +21,7 @@
         <form
           (ngSubmit)="buscar()"
           class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
+          data-aos="fade-down"
         >
           <input
             [(ngModel)]="searchTerm"
@@ -38,6 +39,7 @@
         </form>
 
         <button
+          data-aos="fade-down"
           id="toggleFiltrosBtn"
           class="cursor-pointer bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 px-6 py-3 rounded-xl shadow-md"
           onclick="document.getElementById('filtrosCard').classList.toggle('hidden')"

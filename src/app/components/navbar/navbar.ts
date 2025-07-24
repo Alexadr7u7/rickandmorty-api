@@ -16,4 +16,13 @@ export class Navbar {
     // Cambia isScrolled si el scroll vertical es mayor a 0
     this.isScrolled = window.pageYOffset > 0;
   }
+  closeMenu() {
+    const collapse = document.querySelector(
+      '#hs-navbar-example-collapse'
+    ) as HTMLElement;
+    const target = document.querySelector('#hs-navbar-example') as HTMLElement;
+    if (target?.classList.contains('block')) {
+      collapse?.click(); // emula el click en el botón hamburguesa
+    }
+  }
 }

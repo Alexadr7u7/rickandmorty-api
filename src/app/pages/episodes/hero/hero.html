@@ -6,10 +6,10 @@
   />
 
   <div class="relative z-10 max-w-4xl mx-auto text-center">
-    <h1 class="text-4xl font-extrabold leading-tight mb-4">
+    <h1 class="text-4xl font-extrabold leading-tight mb-4" data-aos="fade-down">
       Explora todos los episodios de Rick and Morty
     </h1>
-    <p class="text-lg text-gray-300 mb-6">
+    <p class="text-lg text-gray-300 mb-6" data-aos="fade-down">
       Descubre en qué capítulo aparecen tus personajes favoritos y revive los
       mejores momentos del multiverso.
     </p>
@@ -21,6 +21,7 @@
         <form
           (submit)="buscarEpisodio()"
           class="flex flex-1 bg-white rounded-xl overflow-hidden shadow-md border border-gray-300"
+          data-aos="fade-down"
         >
           <input
             [(ngModel)]="searchTerm"
