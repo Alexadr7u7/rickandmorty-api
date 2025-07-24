@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RickAndMortyService } from '../../../services/rick-and-morty';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main-characters',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './main-characters.html',
   styleUrl: './main-characters.css',
 })

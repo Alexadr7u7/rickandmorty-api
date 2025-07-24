@@ -1,12 +1,15 @@
 <section class="bg-[#EFF2FB] py-12 px-6">
   <div class="max-w-7xl mx-auto text-center mb-12">
-    <p class="text-sm text-violet-700 font-bold uppercase">
+    <p class="text-sm text-violet-700 font-bold uppercase" data-aos="fade-down">
       Personajes principales
     </p>
-    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2"
+      data-aos="fade-down"
+    >
       Conoce a los protagonistas de Rick and Morty
     </h2>
-    <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+    <p class="mt-4 text-gray-600 max-w-3xl mx-auto" data-aos="fade-down">
       Estos son los personajes más icónicos del universo Rick and Morty. Cada
       uno aporta caos, humor y ciencia extrema a cada episodio.
     </p>
@@ -14,8 +17,8 @@
 
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
+    data-aos="fade-down"
   >
-    <!-- SKELETON LOADER -->
     <ng-container *ngIf="isLoading">
       <div
         *ngFor="let sk of [1, 2, 3, 4, 5]"
@@ -23,7 +26,6 @@
       ></div>
     </ng-container>
 
-    <!-- PERSONAJES -->
     <ng-container *ngIf="!isLoading">
       <div
         *ngFor="let personaje of personajes"
@@ -65,10 +67,13 @@
   </div>
 
   <div class="text-center mt-10">
-    <p class="text-gray-600">
+    <p class="text-gray-600" data-aos="fade-down">
       Y muchos más personajes locos en el multiverso.
-      <a href="#" class="text-violet-600 font-semibold hover:underline">
-        Ver más personajes >
+      <a
+        routerLink="/personajes"
+        class="text-violet-600 font-semibold hover:underline cursor-pointer"
+      >
+        Ver más personajes <i class="fa-solid fa-angle-right"></i>
       </a>
     </p>
   </div>

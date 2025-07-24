@@ -6,6 +6,7 @@ import { Locations } from './pages/locations/locations';
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'home', component: Home },
   { path: 'personajes', component: Characters },
   { path: 'episodios', component: Episodes },
   { path: 'lugares', component: Locations },
