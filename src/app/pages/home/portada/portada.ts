@@ -11,11 +11,12 @@ declare global {
   styleUrls: ['./portada.css'],
   standalone: true,
 })
-export class Portada implements AfterViewInit {
-  ngAfterViewInit(): void {
-    // @ts-ignore: avoid type errors if preline is global
-    window.HSCarousel?.getInstance(
-      document.querySelector('[data-hs-carousel]')
-    ) || window.HSCarousel?.autoInit();
-  }
+  export class Portada implements AfterViewInit {
+    ngAfterViewInit(): void {
+      // @ts-ignore: avoid type errors if preline is global
+      window.HSCarousel?.getInstance(
+        document.querySelector('[data-hs-carousel]')
+      ) || window.HSCarousel?.autoInit();
+    }
 }
+  
