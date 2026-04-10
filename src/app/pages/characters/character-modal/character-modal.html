@@ -1,0 +1,32 @@
+@if (personaje) {
+<ui-modal (cerrar)="cerrarModal()" >
+  <img [src]="personaje.image" class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl shadow-md"
+    alt="{{ personaje.name }}" />
+  <div class="flex-1 space-y-3">
+    <h2 class="text-3xl font-bold">{{ personaje.name }}</h2>
+    <div class="flex items-center gap-2 text-sm">
+      <span class="w-3 h-3 rounded-full inline-block" [ngClass]="{
+              'bg-green-500': personaje.status === 'Alive',
+              'bg-red-500': personaje.status === 'Dead',
+              'bg-gray-400': personaje.status === 'unknown'
+            }"></span>
+      <span class="font-medium">{{ personaje.status }}</span> ·
+      {{ personaje.species }}
+    </div>
+    @if (personaje.type) {
+    <p>
+      <strong>Tipo:</strong> {{ personaje.type }}
+    </p>
+    }
+    <p><strong>Género:</strong> {{ personaje.gender }}</p>
+    <p><strong>Origen:</strong> {{ personaje.origin.name }}</p>
+    <p><strong>Ubicación actual:</strong> {{ personaje.location.name }}</p>
+    <p>
+      <strong>Creado el:</strong> {{ personaje.created | date : "medium" }}
+    </p>
+    <p>
+      <strong>Número de episodios:</strong> {{ personaje.episode.length }}
+    </p>
+  </div>
+</ui-modal>
+}

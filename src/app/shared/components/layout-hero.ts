@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+declare global {
+  interface Window {
+    HSCarousel: any;
+  }
+}
 
 @Component({
   selector: 'ui-hero-layout',
@@ -48,4 +53,11 @@ import { Component } from '@angular/core';
     </section>
   `,
 })
-export class HeroLayout {}
+export class HeroLayout implements AfterViewInit  {
+
+  ngAfterViewInit(): void {
+      window.HSCarousel?.getInstance(
+        document.querySelector('[data-hs-carousel]')
+      ) || window.HSCarousel?.autoInit();
+    }
+}

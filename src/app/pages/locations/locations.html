@@ -1,8 +1,14 @@
-<app-hero (buscar)="onBuscar($event)"></app-hero>
+<ui-search-hero
+  title="Explora todos los lugares del universo de Rick and Morty"
+  description="Descubre planetas, dimensiones y ubicaciones icónicas que han marcado la historia de la serie."
+  placeholder="Ej. Earth (C-137), Citadel of Ricks..."
+  imageSrc="assets/img/locations-hero.webp"
+  imageAlt="RickandMorty"
+  (searched)="onBuscar($event)"
+/>
 
 <section class="px-4 py-8 max-w-7xl mx-auto">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Skeletons mientras carga la API (mostrar 10 skeletons) -->
     @if (isLoadingInitial) {
       @for (_ of skeletonArray; track _) {
         <div
@@ -19,7 +25,6 @@
       }
     }
 
-    <!-- Mensaje si no hay resultados -->
     @if (!isLoadingInitial && locations.length === 0) {
       <div
         class="col-span-full flex flex-col items-center justify-center"
@@ -41,20 +46,17 @@
       </div>
     }
 
-    <!-- Tarjetas reales de episodios -->
     @if (!isLoadingInitial) {
       @for (location of locations; track location) {
         <div
           class="group relative bg-white rounded-xl shadow-md flex overflow-hidden min-h-[180px] transition-transform duration-300 ease-in-out cursor-pointer hover:-translate-y-2 hover:shadow-lg"
           (click)="abrirModal(location)"
           >
-          <!-- Caja que reemplaza imagen con ID -->
           <div
             class="w-40 h-full text-black text-5xl font-black flex items-center justify-center shrink-0 rounded-l-xl"
             >
             {{ location.id }}
           </div>
-          <!-- Detalles del lugart -->
           <div class="p-4 text-gray-800 flex-1">
             <h2 class="text-xl font-bold">{{ location.name }}</h2>
             <p class="text-sm mt-2">

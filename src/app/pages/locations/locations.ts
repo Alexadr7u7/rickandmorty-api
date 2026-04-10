@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Hero } from './hero/hero';
 
 import { RickAndMortyService } from '../../services/rick-and-morty';
 import { Modal } from './modal/modal';
+import { SearchHero } from "../../shared/components/search-hero";
 
 @Component({
   selector: 'app-locations',
-  imports: [Modal, Hero],
+  imports: [Modal, SearchHero],
   templateUrl: './locations.html',
   styleUrl: './locations.css',
 })
