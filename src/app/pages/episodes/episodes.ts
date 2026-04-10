@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero/hero';
 import { RickAndMortyService } from '../../services/rick-and-morty';
-import { CommonModule } from '@angular/common';
+
 import { Modal } from './modal/modal';
 @Component({
   selector: 'app-episodes',
-  imports: [Hero, CommonModule, Modal],
+  imports: [Hero, Modal],
   templateUrl: './episodes.html',
   styleUrl: './episodes.css',
 })

@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-hero',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })

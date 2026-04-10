@@ -1,9 +1,9 @@
 import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-scroll-top',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './scroll-top.html',
   styleUrl: './scroll-top.css',
 })

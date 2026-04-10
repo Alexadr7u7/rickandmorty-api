@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { RickAndMortyService } from '../../../services/rick-and-morty';
 @Component({
   selector: 'app-statistics',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './statistics.html',
   styleUrl: './statistics.css',
 })

@@ -6,7 +6,7 @@
     <h2
       class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2"
       data-aos="fade-down"
-    >
+      >
       Conoce a los protagonistas de Rick and Morty
     </h2>
     <p class="mt-4 text-gray-600 max-w-3xl mx-auto" data-aos="fade-down">
@@ -18,63 +18,65 @@
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
     data-aos="fade-down"
-  >
-    <ng-container *ngIf="isLoading">
-      <div
-        *ngFor="let sk of [1, 2, 3, 4, 5]"
-        class="w-full h-[300px] bg-gray-200 rounded-lg animate-pulse"
-      ></div>
-    </ng-container>
-
-    <ng-container *ngIf="!isLoading">
-      <div
-        *ngFor="let personaje of personajes"
-        class="w-full relative mx-auto h-[300px] overflow-hidden rounded-lg group"
-      >
-        <img
-          [src]="personaje.imagen"
-          [alt]="personaje.nombre"
-          class="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:scale-110"
-        />
+    >
+    @if (isLoading) {
+      @for (sk of [1, 2, 3, 4, 5]; track sk) {
         <div
-          class="absolute inset-0 bg-black/40 p-4 flex flex-col justify-end rounded-lg"
-        >
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-white text-xl font-semibold">
-              {{ personaje.nombre }}
-            </h3>
-            <span
-              class="text-xs font-semibold px-3 py-1 rounded-full text-white"
+          class="w-full h-[300px] bg-gray-200 rounded-lg animate-pulse"
+        ></div>
+      }
+    }
+
+    @if (!isLoading) {
+      @for (personaje of personajes; track personaje) {
+        <div
+          class="w-full relative mx-auto h-[300px] overflow-hidden rounded-lg group"
+          >
+          <img
+            [src]="personaje.imagen"
+            [alt]="personaje.nombre"
+            class="w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-black/40 p-4 flex flex-col justify-end rounded-lg"
+              >
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-white text-xl font-semibold">
+                  {{ personaje.nombre }}
+                </h3>
+                <span
+                  class="text-xs font-semibold px-3 py-1 rounded-full text-white"
               [ngClass]="{
                 'border-2 border-green-500 bg-green-400':
                   personaje.estado === 'Alive',
                 'bg-red-500': personaje.estado === 'Dead',
                 'bg-gray-400': personaje.estado === 'unknown'
               }"
-            >
-              {{
-                personaje.estado === "Alive"
+                  >
+                  {{
+                  personaje.estado === "Alive"
                   ? "Vivo"
                   : personaje.estado === "Dead"
                   ? "Muerto"
                   : "Desconocido"
-              }}
-            </span>
+                  }}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </ng-container>
-  </div>
+        }
+      }
+    </div>
 
-  <div class="text-center mt-10">
-    <p class="text-gray-600" data-aos="fade-down">
-      Y muchos más personajes locos en el multiverso.
-      <a
-        routerLink="/personajes"
-        class="text-violet-600 font-semibold hover:underline cursor-pointer"
-      >
-        Ver más personajes <i class="fa-solid fa-angle-right"></i>
-      </a>
-    </p>
-  </div>
-</section>
+    <div class="text-center mt-10">
+      <p class="text-gray-600" data-aos="fade-down">
+        Y muchos más personajes locos en el multiverso.
+        <a
+          routerLink="/personajes"
+          class="text-violet-600 font-semibold hover:underline cursor-pointer"
+          >
+          Ver más personajes <i class="fa-solid fa-angle-right"></i>
+        </a>
+      </p>
+    </div>
+  </section>

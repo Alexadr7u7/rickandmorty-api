@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero/hero';
-import { CommonModule } from '@angular/common';
+
 import { RickAndMortyService } from '../../services/rick-and-morty';
 import { Modal } from './modal/modal';
 
 @Component({
   selector: 'app-locations',
-  imports: [Modal, Hero, CommonModule],
+  imports: [Modal, Hero],
   templateUrl: './locations.html',
   styleUrl: './locations.css',
 })

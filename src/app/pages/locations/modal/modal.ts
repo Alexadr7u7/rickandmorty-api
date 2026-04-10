@@ -6,13 +6,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { RickAndMortyService } from '../../../services/rick-and-morty';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './modal.html',
   styleUrl: './modal.css',
 })

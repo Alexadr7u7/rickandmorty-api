@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { RickAndMortyService } from '../../../services/rick-and-morty';
 interface Frase {
@@ -11,7 +11,7 @@ interface Frase {
 
 @Component({
   selector: 'app-phrases',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './phrases.html',
   styleUrl: './phrases.css',
 })
