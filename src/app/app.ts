@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './components/navbar/navbar';
-import { Footer } from './components/footer/footer';
-import { ScrollTop } from './components/scroll-top/scroll-top';
+import { Navbar } from './layout/navbar/navbar';
+import { Footer } from './layout/footer/footer';
+import { ScrollTop } from './layout/scroll-top/scroll-top';
 import AOS from 'aos';
 @Component({
   selector: 'app-root',
