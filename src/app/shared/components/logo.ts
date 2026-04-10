@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: ` <span
     class="inline-flex items-center gap-x-2 text-xl font-semibold text-white"
   >
-    <img src="assets/img/logo.png" alt="logo" class="w-15 h-auto" />
+    <img src="assets/img/logo.webp" alt="logo" class="w-15 h-auto" />
     Rick & Morty
   </span>`,
 })

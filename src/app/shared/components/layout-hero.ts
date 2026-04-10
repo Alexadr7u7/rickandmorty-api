@@ -20,19 +20,19 @@ import { Component } from '@angular/core';
           <div class="hs-carousel-slide h-full w-full">
             <div
               class="h-full w-full bg-cover bg-center"
-              style="background-image: url('assets/img/rickandmorty.jpg')"
+              style="background-image: url('assets/img/rickandmorty.webp')"
             ></div>
           </div>
           <div class="hs-carousel-slide h-full w-full">
             <div
               class="h-full w-full bg-cover bg-center"
-              style="background-image: url('assets/img/slider2.jpg')"
+              style="background-image: url('assets/img/slider2.webp')"
             ></div>
           </div>
           <div class="hs-carousel-slide h-full w-full">
             <div
               class="h-full w-full bg-cover bg-center"
-              style="background-image: url('assets/img/slider3.jpg')"
+              style="background-image: url('assets/img/slider3.webp')"
             ></div>
           </div>
         </div>
