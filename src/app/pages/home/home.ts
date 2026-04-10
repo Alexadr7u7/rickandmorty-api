@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Portada } from './portada/portada';
 import { MainCharacters } from './main-characters/main-characters';
 import { Statistics } from './statistics/statistics';
 import { Phrases } from './phrases/phrases';
+import { Hero } from "./hero/hero";
 
 @Component({
   selector: 'app-home',
-  imports: [Portada, MainCharacters, Statistics, Phrases],
+  imports: [ MainCharacters, Statistics, Phrases, Hero],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
